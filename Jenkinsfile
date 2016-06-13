@@ -2,6 +2,9 @@
 
 node('docker') {
 
+    stage 'Checkout'
+    checkout scm
+
     stage 'Wheezy'
     sh 'make test@wheezy'
 
