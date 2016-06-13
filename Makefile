@@ -15,6 +15,7 @@ DOCKER = docker run \
     --volume `pwd`:/etc/ansible/roles/${ROLE_NAME} \
     --volume `pwd`:/srv \
     --workdir /srv \
+		--tty \
     ${DOCKER_OPTIONS} \
     manala/ansible-debian:${DEBIAN_DISTRIBUTION} \
     ${DOCKER_COMMAND}
@@ -39,14 +40,14 @@ help:
 #######
 
 dev@wheezy: DEBIAN_DISTRIBUTION = wheezy
-dev@wheezy: DOCKER_OPTIONS      = --tty --interactive
+dev@wheezy: DOCKER_OPTIONS      = --interactive
 dev@wheezy: DOCKER_COMMAND      = /bin/bash
 dev@wheezy:
 	printf "${COLOR_INFO}Run docker...${COLOR_RESET}\n"
 	$(DOCKER)
 
 dev@jessie: DEBIAN_DISTRIBUTION = jessie
-dev@jessie: DOCKER_OPTIONS      = --tty --interactive
+dev@jessie: DOCKER_OPTIONS      = --interactive
 dev@jessie: DOCKER_COMMAND      = /bin/bash
 dev@jessie:
 	printf "${COLOR_INFO}Run docker...${COLOR_RESET}\n"
