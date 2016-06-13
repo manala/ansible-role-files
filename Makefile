@@ -56,7 +56,7 @@ dev@jessie:
 # Test #
 ########
 
-test@wheezy: DEBIAN_DISTRIBUTION = jessie
+test@wheezy: DEBIAN_DISTRIBUTION = wheezy
 test@wheezy: DOCKER_COMMAND      = make test
 test@wheezy:
 	printf "${COLOR_INFO}Run docker...${COLOR_RESET}\n"
