@@ -7,6 +7,7 @@
         {
           item.src: item|combine({
             'path':      item.src,
+            'src':       None,
             'state':     'directory',
             'task_file': true
           }),
@@ -20,8 +21,10 @@
           item.path: item|combine(
             {'task_template': true}
               if (item.has_key('template')) else
+            {'task_content': true}
+              if (item.has_key('content')) else
             {'task_copy': true}
-              if (item.has_key('copy') or item.has_key('content')) else
+              if (item.has_key('copy')) else
             {'task_url': true}
               if (item.has_key('url')) else
             {'task_file': true}
