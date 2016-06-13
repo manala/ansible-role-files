@@ -5,10 +5,14 @@ node('docker') {
     stage 'Checkout'
     checkout scm
 
-    stage 'Wheezy'
-    sh 'make test@wheezy'
+    stage 'Test - Wheezy'
+    wrap([$class: 'AnsiColorBuildWrapper']) {
+      sh 'make test@wheezy'
+    }
 
-    stage 'Jessie'
-    sh 'make test@jessie'
+    stage 'Test - Jessie'
+    wrap([$class: 'AnsiColorBuildWrapper']) {
+      sh 'make test@jessie'
+    }
 
 }
